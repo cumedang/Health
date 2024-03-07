@@ -3,6 +3,7 @@ package Router
 import (
 	"Health/utill"
 	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo"
 	"golang.org/x/crypto/bcrypt"
