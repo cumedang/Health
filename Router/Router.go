@@ -3,11 +3,12 @@ package Router
 import (
 	"Health/utill"
 	"database/sql"
+	"net/http"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo"
 	"golang.org/x/crypto/bcrypt"
-	"net/http"
 )
 
 var store = sessions.NewCookieStore([]byte("your-secret-key"))
@@ -49,7 +50,6 @@ func LoginProcees(c echo.Context) error {
 		return c.JSON(http.StatusUnauthorized, map[string]interface{}{"success": false, "message": "Login failed. Incorrect username or password."})
 	}
 
-	return c.File("frontend/index.html")
 } //로그인
 
 func SignHanddler(c echo.Context) error {
