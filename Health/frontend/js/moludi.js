@@ -1,7 +1,7 @@
  // REST API를 통해 음식 데이터를 가져오는 함수
  async function fetchFoods() {
   try {
-      const response = await fetch('http://example.com/foods'); // 음식 데이터를 가져올 REST API 엔드포인트를 입력하세요
+      const response = await fetch('localhost:8081/foods'); // 음식 데이터를 가져올 REST API 엔드포인트를 입력하세요
       const data = await response.json();
       return data;
   } catch (error) {
