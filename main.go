@@ -13,6 +13,5 @@ func main() {
 	e.GET("/sign", Router.SignHanddler)
 	e.POST("/login", Router.LoginProcees)
 	e.POST("/sign", Router.SignProcess)
-	e.GET("/diet", Router.DietHanddler)
 	e.Logger.Fatal(e.Start(":8081"))
 }

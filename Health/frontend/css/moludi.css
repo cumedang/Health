@@ -1,8 +1,10 @@
+
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
   margin: 0;
   padding: 0;
+
 }
 
 header,
@@ -10,11 +12,6 @@ section,
 footer {
   text-align: center;
 }
-
-section {
-  margin-top: 20px;
-}
-
 .meal {
   width: 1000px;
   display: flex;
@@ -22,9 +19,9 @@ section {
   margin: 0 auto; /* 가운데 정렬을 위해 추가 */
 }
 
-#breakfast,
-#lunch,
-#dinner {
+.breakfast,
+.lunch,
+.dinner {
   flex: 1;
   border: 1px solid #ff0000;
   padding: 10px;
@@ -32,7 +29,14 @@ section {
   color: #ff0000;
   margin: 0 10px; /* 각 요소 사이의 간격을 벌리기 위해 추가 */
 }
-
+.breakfast:hover,
+.lunch:hover,
+.dinner:hover{
+  border: 1px solid #ffffff;
+  padding: 10px;
+  background-color: #ff0000;
+  color: #ffffff;
+}
 
 
 
@@ -46,7 +50,7 @@ strong {
 
 #food {
   width: 1000px;
-  height: 300px;
+  height: 200px;
   padding: 20px;
   overflow-x: auto; /* 가로 스크롤을 활성화합니다. */
   color: #112031;
@@ -75,12 +79,37 @@ img {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 768px) {
-      .meal {
-        flex-direction: column;
-      }
-      #food {
-        width: 90%;
-        margin: 20px auto;
-      }
-    }
+iframe{
+  height: 200px;
+}
+
+    /* 선택된 라디오 버튼의 색상을 변경하는 CSS */
+    input[type="radio"]:checked + label {
+      background-color: #ff0000; /* 선택된 항목의 배경색을 파란색으로 변경 */
+      color: #fff; /* 선택된 항목의 텍스트 색상을 흰색으로 변경 */
+  }
+
+  /* 라디오 버튼 숨기기 */
+  input[type="radio"] {
+      display: none;
+  }
+
+  /* 선택된 항목의 라벨에 포커스 효과를 주기 위한 스타일 */
+  input[type="radio"] + label:focus {
+      outline: thin dotted;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+  }
+  fieldset {
+    display: flex;
+    justify-content: space-between;
+    width: 80%; /* 가로 길이를 조정 */
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+/* 각 항목의 추가적인 스타일 */
+.breakfast, .lunch, .dinner {
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px; /* 라벨 간의 간격 조정 */
+}

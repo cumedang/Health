@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/sans/css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/sans/img/i.png"/>
+    <link rel="apple-touch-icon" href="/sans/img/favicon.png"/>
+    <title>로그인</title>
+    <style>
+        body{
+            background: url('/sans/img/Background.png') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    <form action="/login" method="post" class="login-form" id="loginForm">
+        <div class="login-title">로그인</div>
+        <div class="id-group">
+            <label for="username"><img src="/sans/img/id.svg"></label>
+            <input type="text" id="username" name="id" placeholder="id">
+        </div>
+        <div class="password-group">
+            <label for="password"><img src="/sans/img/password.svg"></label>
+            <input type="password" id="password" name="pwd" placeholder="password">
+        </div>
+        <input type="submit" class="login-button"></input>
+        <div class="signup-link">
+            <p>계정이 없으신가요? <a href="/sign">회원가입</a></p>
+        </div>
+    </form>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Form을 AJAX로 서버에 제출
+            fetch('/login', {
+                method: 'POST',
+                body: new URLSearchParams(new FormData(event.target)),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+            })
+                .then(response => response.json())  // JSON 응답을 해석
+                .then(data => {
+                    if (data.success == true) {
+                        alert("성공")
+                        location.href="/"
+
+                    } else {
+                        // 로그인 실패 시에는 서버 응답에 따라 동작 수행
+                        alert('로그인에 실패했습니다');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
