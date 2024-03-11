@@ -9,8 +9,19 @@
     height: 530px;
     flex-shrink: 0;
     border-radius: 46px;
-    border: 1.5px solid rgba(255, 255, 255, 0.36);
-    background: rgba(44, 44, 44, 0.59);
+    border: 1.5px solid #ff0000;
+    background: #ffffff;
+    backdrop-filter: blur(4.5px);
+}
+
+
+.login-form2{
+    width: 449px;
+    height: 530px;
+    flex-shrink: 0;
+    border-radius: 46px;
+    border: 1.5px solid #ff0000;
+    background: #ffffff;
     backdrop-filter: blur(4.5px);
 }
 
@@ -18,7 +29,7 @@
     width: 449px;
     height: 89px;
     border-radius: 46px 46px 0 0;
-    background: rgba(0, 0, 0, 0.27);
+    background: #ff0000;
     color: #FFF;
     text-align: center;
     font-family: Inter;
@@ -47,7 +58,7 @@
     height: 40px;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #FFF;
+    border-bottom: 1px solid #ff0000;
     color: #FFF;
     font-family: Inter;
     font-size: 18px;
@@ -93,7 +104,7 @@
     height: 54px;
     flex-shrink: 0;
     border-radius: 28px;
-    background: #646776;
+    background: #ff0000;
     color: #FFF;
     font-family: Inter;
     font-size: 15px;
@@ -114,7 +125,7 @@
 }
 
 .signup-link a {
-    color: #5e81ac;
+    color: #ff0000;
     text-decoration: none;
     font-weight: bold;
 }
