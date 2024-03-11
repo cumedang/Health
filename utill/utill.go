@@ -1,4 +1,3 @@
-
 package utill
 
 import (
@@ -37,14 +36,3 @@ func CheckName(name string) bool {
 	}
 	return false
 } //이름 중복체크
-
-package utill
-
-import "log"
-
-func Error(err error) {
-	if err != nil {
-		log.Panic(err)
-	}
-}
-
