@@ -12,7 +12,7 @@ func Error(err error) {
 }
 
 func CheckId(id string) bool {
-	db, err := sql.Open("mysql", "iana:12923@tcp(127.0.0.1:3306)/adoins")
+	db, err := sql.Open("mysql", "healthuser:1234@tcp(127.0.0.1:3306)/health")
 	Error(err)
 	defer db.Close()
 	var fid string
@@ -25,7 +25,7 @@ func CheckId(id string) bool {
 } //아이디 중복체크
 
 func CheckName(name string) bool {
-	db, err := sql.Open("mysql", "iana:12923@tcp(127.0.0.1:3306)/adoins")
+	db, err := sql.Open("mysql", "healthuser:1234@tcp(127.0.0.1:3306)/health")
 	Error(err)
 	defer db.Close()
 	var fname string
