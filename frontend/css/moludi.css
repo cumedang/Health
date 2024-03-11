@@ -12,6 +12,12 @@ section,
 footer {
   text-align: center;
 }
+
+
+section {
+  margin-top: 20px;
+}
+
 .meal {
   width: 1000px;
   display: flex;
@@ -19,9 +25,15 @@ footer {
   margin: 0 auto; /* 가운데 정렬을 위해 추가 */
 }
 
+
 .breakfast,
 .lunch,
 .dinner {
+
+#breakfast,
+#lunch,
+#dinner {
+
   flex: 1;
   border: 1px solid #ff0000;
   padding: 10px;
@@ -29,6 +41,7 @@ footer {
   color: #ff0000;
   margin: 0 10px; /* 각 요소 사이의 간격을 벌리기 위해 추가 */
 }
+
 .breakfast:hover,
 .lunch:hover,
 .dinner:hover{
@@ -37,6 +50,9 @@ footer {
   background-color: #ff0000;
   color: #ffffff;
 }
+
+
+
 
 
 
@@ -50,7 +66,11 @@ strong {
 
 #food {
   width: 1000px;
+
   height: 200px;
+
+  height: 300px;
+
   padding: 20px;
   overflow-x: auto; /* 가로 스크롤을 활성화합니다. */
   color: #112031;
@@ -78,6 +98,7 @@ img {
   display: block;
   margin: 0 auto;
 }
+
 
 iframe{
   height: 200px;
@@ -113,3 +134,14 @@ iframe{
     border-radius: 5px;
     margin-right: 10px; /* 라벨 간의 간격 조정 */
 }
+
+@media screen and (max-width: 768px) {
+      .meal {
+        flex-direction: column;
+      }
+      #food {
+        width: 90%;
+        margin: 20px auto;
+      }
+    }
+
