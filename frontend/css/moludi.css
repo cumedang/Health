@@ -26,14 +26,10 @@ section {
 }
 
 
-.breakfast,
-.lunch,
-.dinner {
 
 #breakfast,
 #lunch,
 #dinner {
-
   flex: 1;
   border: 1px solid #ff0000;
   padding: 10px;
@@ -144,4 +140,3 @@ iframe{
         margin: 20px auto;
       }
     }
-
