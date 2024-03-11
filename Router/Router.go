@@ -27,7 +27,6 @@ func LoginProcees(c echo.Context) error {
 	session, err := store.Get(c.Request(), "sanss")
 	utill.Error(err)
 	db, err := sql.Open("mysql", "iana:12923@tcp(127.0.0.1:3306)/adoins")
-	defer db.Close()
 	utill.Error(err)
 	var id string
 	var password []byte
@@ -69,11 +68,13 @@ func SignProcess(c echo.Context) error {
 		return c.JSON(http.StatusUnauthorized, map[string]interface{}{"success": false, "message": "nameError"})
 	}
 
-	db, err := sql.Open("mysql", "iana:12923@tcp(127.0.0.1:3306)/adoins")
+	db, err := sql.Open("mysql", "healthuser:1234@tcp(127.0.0.1:3306)/health")
 	utill.Error(err)
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(fpassword), bcrypt.DefaultCost)
 	utill.Error(err)
 	db.Query("INSERT INTO member values(?,?,?)", fid, hashedPassword, fname)
+	_, err = db.Query("CREATE TABLE " + fid + " (id varchar(50) primary key, day date, foodname varchar(50), ka varchar(50))")
+	utill.Error(err)
 	defer db.Close()
 
 	return c.JSON(http.StatusUnauthorized, map[string]interface{}{"success": true, "message": "Success"})
