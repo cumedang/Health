@@ -1,5 +1,11 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
   <meta charset="UTF-8">
@@ -7,6 +13,35 @@
   <link rel="stylesheet" href="css/moludi.css">
   <title></title>
 </head>
+
+<header>
+  <iframe src="parts/header.html" width="100%" height="600px" frameborder="0"></iframe>
+</header>
+<section>
+
+  <form>
+    <fieldset>
+      <legend>식사 시간을 선택하세요:</legend>
+      <div>
+          <input type="radio" id="morning" name="meal" value="morning">
+          <label for="morning" class="breakfast">아침</label>
+      </div>
+      <div>
+          <input type="radio" id="lunch" name="meal" value="lunch">
+          <label for="lunch" class="lunch">점심</label>
+      </div>
+      <div>
+          <input type="radio" id="dinner" name="meal" value="dinner">
+          <label for="dinner" class="dinner">저녁</label>
+      </div>
+  </fieldset>
+
+    <fieldset>
+      <legend>선택한 시간에 먹은 음식을 선택해주세요:</legend>
+     <div id="food"></div>
+    </fieldset>
+  </form>
+
 <header></header>
 <section>
   <div class="meal">
@@ -57,6 +92,7 @@
       <p>파란색 카레</p>
     </div>
   </div>
+
   
   <h1><strong>밤양gang</strong></h1>
 </section>
@@ -64,4 +100,6 @@
 </body>
 <script src="js/moludi.js"></script>
 
+
 </html>
+
