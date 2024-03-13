@@ -3,6 +3,7 @@ package Router
 import (
 	"Health/utill"
 	"database/sql"
+	"encoding/json"
 	"net/http"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -10,6 +11,16 @@ import (
 	"github.com/labstack/echo"
 	"golang.org/x/crypto/bcrypt"
 )
+
+type Food struct {
+	Name         string `json:"name"`
+	Calories     int    `json:"calories"`
+	Link         string `json:"link"`
+	Carbohydrate string `json:"carbohydrate"`
+	Protein      string `json:"protein"`
+	Province     string `json:"province"`
+	Vitamin      string `json:"vitamin"`
+}
 
 var store = sessions.NewCookieStore([]byte("your-secret-key"))
 
@@ -82,4 +93,30 @@ func SignProcess(c echo.Context) error {
 
 func DietHanddler(c echo.Context) error {
 	return c.File("frontend/moludi.html")
+}
+
+func DietProcess(c echo.Context) error {
+	return c.File("")
+}
+
+func FoodHanddler(c echo.Context) error {
+	db, err := sql.Open("mysql", "healthuser:1234@tcp(127.0.0.1:3306)/health")
+	utill.Error(err)
+	var foods []Food
+	row, err := db.Query("SELECT food_name,Calories,photo_link,tan,Prot,Prov,Vita from foods")
+	defer row.Close()
+	for row.Next() {
+		var food Food
+		if err = row.Scan(&food.Name, &food.Calories, &food.Link, &food.Carbohydrate, &food.Protein, &food.Province, &food.Vitamin); err != nil {
+			http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
+			return err
+		}
+		foods = append(foods, food)
+	}
+	c.Response().Writer.Header().Set("Content-Type", "application/json")
+	if err := json.NewEncoder(c.Response().Writer).Encode(foods); err != nil {
+		http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
+		return nil
+	}
+	return nil
 }
