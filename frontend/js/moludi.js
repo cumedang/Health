@@ -1,7 +1,7 @@
  // REST API를 통해 음식 데이터를 가져오는 함수
  async function fetchFoods() {
   try {
-      const response = await fetch('localhost:8081/foods'); // 음식 데이터를 가져올 REST API 엔드포인트를 입력하세요
+      const response = await fetch('http://localhost:8081/foods'); // 음식 데이터를 가져올 REST API 엔드포인트를 입력하세요
       const data = await response.json();
       return data;
   } catch (error) {
@@ -22,7 +22,7 @@ async function renderFoodItems() {
       imgBoxDiv.id = 'imgbox'; // img를 감싸는 div에 id를 imgbox로 설정
 
       const imgElement = document.createElement('img');
-      imgElement.src = food.image;
+      imgElement.src = food.link;
       imgElement.alt = food.name;
 
       const pElement = document.createElement('p');
