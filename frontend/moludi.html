@@ -8,20 +8,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="sans/css/moludi.css">
+  <link rel="stylesheet" href="/sans/css/moludi.css">
   <title></title>
 </head>
 
 
 <body>
   <header>
-    <iframe src="sans/parts/header.html" width="100%" height="600px" frameborder="0"></iframe>
+    <iframe src="/sans/parts/header.html" width="100%" height="600px" frameborder="0"></iframe>
   </header>
   <section>
 
     <form action="/diet" method="post">
-      <fieldset>
-        <legend>식사 시간을 선택하세요:</legend>
+
+      <div id="time">
         <div>
           <input type="radio" id="morning" name="meal" value="morning">
           <label for="morning" class="breakfast">아침</label>
@@ -34,12 +34,12 @@
           <input type="radio" id="dinner" name="meal" value="dinner">
           <label for="dinner" class="dinner">저녁</label>
         </div>
-      </fieldset>
+      </div>
 
-      <fieldset>
-        <legend>선택한 시간에 먹은 음식을 선택해주세요:</legend>
+      <div id="foods">
         <div id="food"></div>
-      </fieldset>
+      </div>
+
       <input type="submit" value="제출">
     </form>
     <footer></footer>

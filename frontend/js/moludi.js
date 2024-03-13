@@ -1,7 +1,8 @@
- // REST API를 통해 음식 데이터를 가져오는 함수
- async function fetchFoods() {
+// JavaScript 파일
+
+async function fetchFoods() {
   try {
-      const response = await fetch('http://localhost:8081/foods'); // 음식 데이터를 가져올 REST API 엔드포인트를 입력하세요
+      const response = await fetch('http://localhost:8081/foods');
       const data = await response.json();
       return data;
   } catch (error) {
@@ -9,9 +10,8 @@
   }
 }
 
-// food div에 음식 정보 동적으로 추가
 async function renderFoodItems() {
-  const foods = await fetchFoods(); // 음식 데이터를 가져옴
+  const foods = await fetchFoods();
   const foodDiv = document.getElementById('food');
 
   foods.forEach(food => {
@@ -19,17 +19,41 @@ async function renderFoodItems() {
       foodItemDiv.classList.add('food-item');
 
       const imgBoxDiv = document.createElement('div');
-      imgBoxDiv.id = 'imgbox'; // img를 감싸는 div에 id를 imgbox로 설정
+      imgBoxDiv.classList.add('img-box');
 
       const imgElement = document.createElement('img');
       imgElement.src = food.link;
       imgElement.alt = food.name;
 
-      const pElement = document.createElement('p');
-      pElement.textContent = food.name;
+      const foodName = document.createElement('p');
+      foodName.classList.add('food-name');
+      foodName.textContent = food.name;
+
+      const foodDetails = document.createElement('div');
+      foodDetails.classList.add('food-detail');
+
+      const detailLabels = ['Calories', 'Carbohydrate', 'Protein', 'Province', 'Vitamin'];
+      const detailValues = [food.calories, food.carbohydrate, food.protein, food.province, food.vitamin];
+
+      detailLabels.forEach((label, index) => {
+          const detailLabel = document.createElement('span');
+          detailLabel.classList.add('detail-label');
+          detailLabel.textContent = label + ': ';
+
+          const detailValue = document.createElement('span');
+          detailValue.classList.add('detail-value');
+          detailValue.textContent = detailValues[index];
+
+          const detailContainer = document.createElement('div');
+          detailContainer.appendChild(detailLabel);
+          detailContainer.appendChild(detailValue);
+
+          foodDetails.appendChild(detailContainer);
+      });
 
       imgBoxDiv.appendChild(imgElement);
-      imgBoxDiv.appendChild(pElement);
+      imgBoxDiv.appendChild(foodName);
+      imgBoxDiv.appendChild(foodDetails);
 
       foodItemDiv.appendChild(imgBoxDiv);
 
@@ -37,4 +61,4 @@ async function renderFoodItems() {
   });
 }
 
-renderFoodItems(); // 음식 정보 렌더링
+renderFoodItems();
