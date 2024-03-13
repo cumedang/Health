@@ -118,6 +118,7 @@ input[type="submit"]:hover{
 /* Image box */
 .img-box {
   text-align: center;
+
   width: 100%;
   max-width: 1000px; /* 변경된 부분 */
   padding: 20px;
@@ -130,6 +131,7 @@ input[type="submit"]:hover{
 img {
   width: 100px;
   height: 100px;
+
 }
 
 /* Food name */
