@@ -26,19 +26,6 @@ section {
 }
 
 
-
-#breakfast,
-#lunch,
-#dinner {
-  flex: 1;
-  border: 1px solid #ff0000;
-  padding: 10px;
-  background-color: #ffffff;
-  color: #ff0000;
-  margin: 0 10px;
-  /* 각 요소 사이의 간격을 벌리기 위해 추가 */
-}
-
 .breakfast:hover,
 .lunch:hover,
 .dinner:hover {
@@ -50,53 +37,12 @@ section {
 
 
 
-
-
-
 h1 {
   color: #ff0000;
 }
 
 strong {
   color: #ff0000;
-}
-
-#food {
-  width: 1000px;
-
-  height: 200px;
-
-  height: 300px;
-
-  padding: 20px;
-  overflow-x: auto;
-  /* 가로 스크롤을 활성화합니다. */
-  color: #112031;
-  border: 1px solid #ff0000;
-  overflow-y: hidden;
-  /* 세로 스크롤을 숨깁니다. */
-  white-space: nowrap;
-  margin: 20px auto;
-  background-color: #ffffff;
-  display: flex;
-}
-
-#imgbox {
-  border: 1px solid #ff0000;
-  width: 120px;
-  height: 120px;
-  margin: 0 20px 20px;
-  /* 이미지 박스 간의 상하 간격을 주기 위해 수정 */
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-}
-
-img {
-  width: 100px;
-  height: 100px;
-  display: block;
-  margin: 0 auto;
 }
 
 
@@ -124,14 +70,6 @@ input[type="radio"]+label:focus {
   outline-offset: -2px;
 }
 
-fieldset {
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  /* 가로 길이를 조정 */
-  margin: 0 auto;
-  /* 가운데 정렬 */
-}
 
 /* 각 항목의 추가적인 스타일 */
 .breakfast,
@@ -139,8 +77,14 @@ fieldset {
 .dinner {
   padding: 5px 10px;
   border-radius: 5px;
-  margin-right: 10px;
+  margin-right: 5px;
+  display: block;
+  width: 250px;
+  font-size: 18px; /* 라벨 폰트 크기 조정 */
+  cursor: pointer; /* 커서 스타일 변경 */
   /* 라벨 간의 간격 조정 */
+  height: 45px;
+  line-height: 45px;
 }
 
 input[type="submit"]{
@@ -155,6 +99,59 @@ input[type="submit"]:hover{
   border: 1px solid #ff0000;
 }
 
+.food-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Individual food item */
+.food-item {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+}
+
+/* Image box */
+.img-box {
+  text-align: center;
+}
+
+/* Food name */
+.food-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #dc3545; /* 빨간색 */
+  margin-top: 10px;
+}
+
+/* Food details */
+.food-detail {
+  margin-top: 5px;
+}
+
+/* Food detail label */
+.detail-label {
+  font-weight: bold;
+}
+
+/* Food detail value */
+.detail-value {
+  color: #FF0000; 
+}
+
+#time {
+  display: flex;
+  justify-content: center; /* 가운데 정렬 */
+  margin-bottom: 20px; /* 간격 조정 */
+}
+
+#foods{
+  min-height: 100px;
+}
 @media screen and (max-width: 768px) {
   .meal {
     flex-direction: column;
