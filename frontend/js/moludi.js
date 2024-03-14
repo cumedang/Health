@@ -32,7 +32,7 @@ async function renderFoodItems() {
       const foodDetails = document.createElement('div');
       foodDetails.classList.add('food-detail');
 
-      const detailLabels = ['Calories', 'Carbohydrate', 'Protein', 'Province', 'Vitamin'];
+      const detailLabels = ['칼로리', '탄수화물', '단백빌', '지방', '비타민'];
       const detailValues = [food.calories, food.carbohydrate, food.protein, food.province, food.vitamin];
 
       detailLabels.forEach((label, index) => {
