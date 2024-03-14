@@ -31,17 +31,13 @@ section {
 .dinner:hover {
   border: 1px solid #ffffff;
   padding: 10px;
-  background-color: #ff0000;
+  background-color: #EB3232;
   color: #ffffff;
 }
 
 
 
 h1 {
-  color: #ff0000;
-}
-
-strong {
   color: #ff0000;
 }
 
@@ -52,8 +48,7 @@ iframe {
 
 /* 선택된 라디오 버튼의 색상을 변경하는 CSS */
 input[type="radio"]:checked+label {
-  background-color: #ff0000;
-  /* 선택된 항목의 배경색을 파란색으로 변경 */
+  background-color: #ff4545;
   color: #fff;
   /* 선택된 항목의 텍스트 색상을 흰색으로 변경 */
 }
@@ -68,6 +63,7 @@ input[type="radio"]+label:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
+  background-color: #FF0000;
 }
 
 
@@ -91,12 +87,14 @@ input[type="submit"]{
   color: #ff0000;
   background-color: #ffffff;
   border: 1px solid #ffffff;
+  width: 250px;
+  height: 50px;
 }
 
 input[type="submit"]:hover{
   color: #ffffff;
   background-color: #ff0000;
-  border: 1px solid #ff0000;
+  border: 1px solid #EB3232;
 }
 
 .food-container {
