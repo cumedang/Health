@@ -3,7 +3,6 @@ body {
   background-color: #ffffff;
   margin: 0;
   padding: 0;
-
 }
 
 header,
@@ -11,7 +10,6 @@ section,
 footer {
   text-align: center;
 }
-
 
 section {
   margin-top: 20px;
@@ -22,9 +20,7 @@ section {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  /* 가운데 정렬을 위해 추가 */
 }
-
 
 .breakfast:hover,
 .lunch:hover,
@@ -35,12 +31,9 @@ section {
   color: #ffffff;
 }
 
-
-
 h1 {
   color: #ff0000;
 }
-
 
 iframe {
   height: 200px;
@@ -50,7 +43,6 @@ iframe {
 input[type="radio"]:checked+label {
   background-color: #ff4545;
   color: #fff;
-  /* 선택된 항목의 텍스트 색상을 흰색으로 변경 */
 }
 
 /* 라디오 버튼 숨기기 */
@@ -66,7 +58,6 @@ input[type="radio"]+label:focus {
   background-color: #FF0000;
 }
 
-
 /* 각 항목의 추가적인 스타일 */
 .breakfast,
 .lunch,
@@ -76,14 +67,13 @@ input[type="radio"]+label:focus {
   margin-right: 5px;
   display: block;
   width: 250px;
-  font-size: 18px; /* 라벨 폰트 크기 조정 */
-  cursor: pointer; /* 커서 스타일 변경 */
-  /* 라벨 간의 간격 조정 */
+  font-size: 18px;
+  cursor: pointer;
   height: 45px;
   line-height: 45px;
 }
 
-input[type="submit"]{
+input[type="submit"] {
   color: #ff0000;
   background-color: #ffffff;
   border: 1px solid #ffffff;
@@ -91,7 +81,7 @@ input[type="submit"]{
   height: 50px;
 }
 
-input[type="submit"]:hover{
+input[type="submit"]:hover {
   color: #ffffff;
   background-color: #ff0000;
   border: 1px solid #EB3232;
@@ -116,9 +106,8 @@ input[type="submit"]:hover{
 /* Image box */
 .img-box {
   text-align: center;
-
   width: 100%;
-  max-width: 1000px; /* 변경된 부분 */
+  max-width: 1000px;
   padding: 20px;
   overflow: auto;
   white-space: nowrap;
@@ -129,14 +118,13 @@ input[type="submit"]:hover{
 img {
   width: 100px;
   height: 100px;
-
 }
 
 /* Food name */
 .food-name {
   font-size: 1.2em;
   font-weight: bold;
-  color: #dc3545; /* 빨간색 */
+  color: #dc3545;
   margin-top: 10px;
 }
 
@@ -152,18 +140,19 @@ img {
 
 /* Food detail value */
 .detail-value {
-  color: #FF0000; 
+  color: #FF0000;
 }
 
 #time {
   display: flex;
-  justify-content: center; /* 가운데 정렬 */
-  margin-bottom: 20px; /* 간격 조정 */
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-#foods{
+#foods {
   min-height: 100px;
 }
+
 @media screen and (max-width: 768px) {
   .meal {
     flex-direction: column;

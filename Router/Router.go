@@ -37,23 +37,24 @@ func LoginProcees(c echo.Context) error {
 	fpassword := c.FormValue("pwd")
 	session, err := store.Get(c.Request(), "sanss")
 	utill.Error(err)
-	db, err := sql.Open("mysql", "iana:12923@tcp(127.0.0.1:3306)/adoins")
+	db, err := sql.Open("mysql", "healthuser:1234@tcp(127.0.0.1:3306)/health")
 	utill.Error(err)
 	var id string
-	var password []byte
+	var password string
 	var name string
 
 	err = db.QueryRow("SELECT id, pw, name from member where id = ?", fid).Scan(&id, &password, &name)
-	utill.Error(err)
 	if err != nil {
 		return c.JSON(http.StatusUnauthorized, map[string]interface{}{"success": false, "message": "Login failed. Incorrect username or password."})
 	}
-	err = bcrypt.CompareHashAndPassword(password, []byte(fpassword))
+	err = bcrypt.CompareHashAndPassword([]byte(password), []byte(fpassword))
+	if err != nil {
+		return c.JSON(http.StatusUnauthorized, map[string]interface{}{"success": false, "message": "Login failed. Incorrect username or password."})
+	}
 	if err == nil {
 		session.Values["name"] = name
 		err = session.Save(c.Request(), c.Response())
 		utill.Error(err)
-		session.Save(c.Request(), c.Response())
 		//fmt.Println(session.Values["name"]) 세션 이름 가져오기
 		return c.JSON(http.StatusUnauthorized, map[string]interface{}{"success": true, "message": "Success"})
 	} else {
