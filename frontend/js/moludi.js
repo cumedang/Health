@@ -16,53 +16,61 @@ async function renderFoodItems() {
   foodDiv.innerHTML = ''; // 검색 결과를 업데이트하기 전에 이전 결과를 지웁니다.
 
   foods.forEach(food => {
-      // 검색어가 포함된 결과만 보여줍니다.
-      if (food.name.toLowerCase().includes(searchInput)) {
-          const foodItemDiv = document.createElement('div');
-          foodItemDiv.classList.add('food-item');
+    // 검색어가 포함된 결과만 보여줍니다.
+    if (food.name.toLowerCase().includes(searchInput)) {
+        const foodItemDiv = document.createElement('div');
+        foodItemDiv.classList.add('food-item');
 
-          const imgBoxDiv = document.createElement('div');
-          imgBoxDiv.classList.add('img-box');
+        const radioInput = document.createElement('input');
+        radioInput.type = 'radio';
+        radioInput.name = 'foodSelection'; // 라디오 그룹의 이름 설정
+        radioInput.value = food.name; // 라디오 버튼의 값으로 음식의 이름 설정
+        radioInput.classList.add('food-radio');
 
-          const imgElement = document.createElement('img');
-          imgElement.src = food.link;
-          imgElement.alt = food.name;
+        const imgBoxDiv = document.createElement('div');
+        imgBoxDiv.classList.add('img-box');
 
-          const foodName = document.createElement('p');
-          foodName.classList.add('food-name');
-          foodName.textContent = food.name;
+        const imgElement = document.createElement('img');
+        imgElement.src = food.link;
+        imgElement.alt = food.name;
 
-          const foodDetails = document.createElement('div');
-          foodDetails.classList.add('food-detail');
+        const foodName = document.createElement('p');
+        foodName.classList.add('food-name');
+        foodName.textContent = food.name;
 
-          const detailLabels = ['칼로리', '탄수화물', '단백빌', '지방', '비타민'];
-          const detailValues = [food.calories, food.carbohydrate, food.protein, food.province, food.vitamin];
+        const foodDetails = document.createElement('div');
+        foodDetails.classList.add('food-detail');
 
-          detailLabels.forEach((label, index) => {
-              const detailLabel = document.createElement('span');
-              detailLabel.classList.add('detail-label');
-              detailLabel.textContent = label + ': ';
+        const detailLabels = ['칼로리', '탄수화물', '단백빌', '지방', '비타민'];
+        const detailValues = [food.calories, food.carbohydrate, food.protein, food.province, food.vitamin];
 
-              const detailValue = document.createElement('span');
-              detailValue.classList.add('detail-value');
-              detailValue.textContent = detailValues[index];
+        detailLabels.forEach((label, index) => {
+            const detailLabel = document.createElement('span');
+            detailLabel.classList.add('detail-label');
+            detailLabel.textContent = label + ': ';
 
-              const detailContainer = document.createElement('div');
-              detailContainer.appendChild(detailLabel);
-              detailContainer.appendChild(detailValue);
+            const detailValue = document.createElement('span');
+            detailValue.classList.add('detail-value');
+            detailValue.textContent = detailValues[index];
 
-              foodDetails.appendChild(detailContainer);
-          });
+            const detailContainer = document.createElement('div');
+            detailContainer.appendChild(detailLabel);
+            detailContainer.appendChild(detailValue);
 
-          imgBoxDiv.appendChild(imgElement);
-          imgBoxDiv.appendChild(foodName);
-          imgBoxDiv.appendChild(foodDetails);
+            foodDetails.appendChild(detailContainer);
+        });
 
-          foodItemDiv.appendChild(imgBoxDiv);
+        imgBoxDiv.appendChild(imgElement);
+        imgBoxDiv.appendChild(foodName);
+        imgBoxDiv.appendChild(foodDetails);
 
-          foodDiv.appendChild(foodItemDiv);
-      }
-  });
+        foodItemDiv.appendChild(radioInput); // 라디오 버튼을 foodItemDiv에 추가합니다.
+        foodItemDiv.appendChild(imgBoxDiv);
+
+        foodDiv.appendChild(foodItemDiv);
+    }
+});
+
 }
 
 function searchFunction() {
