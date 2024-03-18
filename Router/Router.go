@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"encoding/json"
 	"net/http"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/sessions"
@@ -96,8 +97,19 @@ func DietHanddler(c echo.Context) error {
 }
 
 func DietProcess(c echo.Context) error {
-
-	return c.File("")
+	db, err := sql.Open("mysql", "healthuser:1234@tcp(127.0.0.1:3306)/health")
+	utill.Error(err)
+	moludi := c.Request().FormValue("meal")
+	fname := c.Request().FormValue("food-name")
+	session, err := store.Get(c.Request(), "sanss")
+	utill.Error(err)
+	idValue := session.Values["id"]
+	id, _ := idValue.(string)
+	now := time.Now()
+	custom := now.Format("2006-01-02")
+	_, err = db.Query("insert into "+id+" values(?,?,?)", custom, moludi, fname)
+	utill.Error(err)
+	return c.File("frontend/moludi.html")
 }
 
 func FoodHanddler(c echo.Context) error {
@@ -143,4 +155,8 @@ func SessionHandller(c echo.Context) error {
 	c.Response().Writer.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(c.Response().Writer).Encode(response)
 	return nil
+}
+
+func FindByDate(c echo.Context) error {
+	return c.File("frontend/findByDate.html")
 }

@@ -18,5 +18,6 @@ func main() {
 	e.POST("/diet", Router.DietProcess)
 	e.GET("/foods", Router.FoodHanddler)
 	e.GET("/session", Router.SessionHandller)
+	e.GET("/find", Router.FindByDate)
 	e.Logger.Fatal(e.Start(":8081"))
 }
