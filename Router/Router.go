@@ -52,10 +52,9 @@ func LoginProcees(c echo.Context) error {
 		return c.JSON(http.StatusUnauthorized, map[string]interface{}{"success": false, "message": "Login failed. Incorrect username or password."})
 	}
 	if err == nil {
-		session.Values["name"] = name
+		session.Values["id"] = id
 		err = session.Save(c.Request(), c.Response())
 		utill.Error(err)
-		//fmt.Println(session.Values["name"]) 세션 이름 가져오기
 		return c.JSON(http.StatusUnauthorized, map[string]interface{}{"success": true, "message": "Success"})
 	} else {
 		return c.JSON(http.StatusUnauthorized, map[string]interface{}{"success": false, "message": "Login failed. Incorrect username or password."})
@@ -97,6 +96,7 @@ func DietHanddler(c echo.Context) error {
 }
 
 func DietProcess(c echo.Context) error {
+
 	return c.File("")
 }
 
@@ -119,5 +119,28 @@ func FoodHanddler(c echo.Context) error {
 		http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
 		return nil
 	}
+	return nil
+}
+func SessionHandller(c echo.Context) error {
+	session, err := store.Get(c.Request(), "sanss")
+	if err != nil {
+		http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
+		return nil
+	}
+
+	// 세션에서 id 값을 가져옴
+	id, ok := session.Values["id"].(string)
+	if !ok {
+		http.Error(c.Response().Writer, "세션에서 ID를 가져올 수 없습니다.", http.StatusInternalServerError)
+		return nil
+	}
+
+	// JSON 형식으로 응답
+	response := struct {
+		ID string `json:"id"`
+	}{ID: id}
+
+	c.Response().Writer.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(c.Response().Writer).Encode(response)
 	return nil
 }

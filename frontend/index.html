@@ -31,7 +31,7 @@
                 우리를 위해 열려 있는 문을 보지 못한다 <span>-헬렌켈러-</span>
             </h6>
 
-            <a href="main.html">알아보기</a>
+            <a href="/diet">알아보기</a>
         </div>
         
         <!-- <img src="/img/INTRO_MAIN.png" id="main_logo" alt="메인이미지"> -->
@@ -39,9 +39,30 @@
     </main>
 
     <footer>
-        <p>010-4166-5772</p>
-        <p>chanbin5634@gmail.com</p>
-        <p>개발 및 디자인 : Lalluby_kim07</p>
+        
     </footer>
 </body>
+<script>
+    fetch('/session').then(response => response.json()).then(data => {
+        // 받아온 JSON에서 세션 ID 값을 추출하여 화면에 출력
+        document.getElementById('login').textContent = data.id;
+        document.getElementById('login').href = "/"
+        sessionId = data.id
+        if (sessionId) {
+        const signupLink = document.getElementById("sign");// <- 변경 
+        signupLink.innerHTML = "로그아웃";
+        signupLink.href = "/"; // 로그아웃 링크의 경우 JavaScript 함수를 호출하도록 설정하거나, 적절한 로그아웃 URL로 변경해야 합니다.
+        signupLink.addEventListener("click", function() {
+          // 로그아웃 로직을 처리할 JavaScript 함수를 호출하거나, 서버에 로그아웃 요청을 보낼 수 있습니다.
+          // 예: logout();
+          // 아래는 예시로 클릭 시 쿠키를 삭제하는 코드입니다.
+            document.cookie = "sanss=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          // 여기에 로그아웃 시 필요한 로직을 추가하세요.
+        });
+        
+        // 회원가입 링크를 숨깁니다.
+}
+    })
+    
+  </script>
 </html>
