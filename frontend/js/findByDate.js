@@ -1,6 +1,6 @@
 async function fetchFoods(date) {
   try {
-    const response = await fetch('http://localhost:8081/foods?date=' + date);
+    const response = await fetch('http://localhost:8081/finddate?date=' + date);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -32,11 +32,12 @@ document.getElementById("searchForm").addEventListener("submit", async function(
       var resultList = "<ul>";
       foods.forEach(food => {
         resultList += "<li><strong>음식 이름:</strong> " + food.name + "<br>";
+        resultList += "<strong>시간대:</strong> " + food.moludi + "<br>";
         resultList += "<strong>칼로리:</strong> " + food.calories + "<br>";
         resultList += "<strong>단백질:</strong> " + food.protein + "<br>";
-        resultList += "<strong>탄수화물:</strong> " + food.carbohydrates + "<br>";
-        resultList += "<strong>지방:</strong> " + food.fat + "<br>";
-        resultList += "<strong>섬유:</strong> " + food.fiber + "</li>";
+        resultList += "<strong>탄수화물:</strong> " + food.carbohydrate + "<br>";
+        resultList += "<strong>지방:</strong> " + food.province + "<br>";
+        resultList += "<strong>비타민:</strong> " + food.vitamin + "</li>";
       });
       resultList += "</ul>";
       searchResultsElement.innerHTML += resultList;

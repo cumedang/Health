@@ -19,5 +19,6 @@ func main() {
 	e.GET("/foods", Router.FoodHanddler)
 	e.GET("/session", Router.SessionHandller)
 	e.GET("/find", Router.FindByDate)
+	e.GET("finddate", Router.SelectDate)
 	e.Logger.Fatal(e.Start(":8081"))
 }
