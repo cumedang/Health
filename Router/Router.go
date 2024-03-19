@@ -4,6 +4,7 @@ import (
 	"Health/utill"
 	"database/sql"
 	"encoding/json"
+	"errors"
 	"net/http"
 	"time"
 
@@ -17,6 +18,15 @@ type Food struct {
 	Name         string `json:"name"`
 	Calories     int    `json:"calories"`
 	Link         string `json:"link"`
+	Carbohydrate string `json:"carbohydrate"`
+	Protein      string `json:"protein"`
+	Province     string `json:"province"`
+	Vitamin      string `json:"vitamin"`
+}
+type Sfood struct {
+	Name         string `json:"name"`
+	Moludi       string `json:"moludi"`
+	Calories     int    `json:"calories"`
 	Carbohydrate string `json:"carbohydrate"`
 	Protein      string `json:"protein"`
 	Province     string `json:"province"`
@@ -159,4 +169,71 @@ func SessionHandller(c echo.Context) error {
 
 func FindByDate(c echo.Context) error {
 	return c.File("frontend/findByDate.html")
+}
+
+func SelectDate(c echo.Context) error {
+	db, err := sql.Open("mysql", "healthuser:1234@tcp(127.0.0.1:3306)/health")
+	if err != nil {
+		http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
+		return err
+	}
+	defer db.Close()
+
+	date := c.QueryParam("date")
+	session, err := store.Get(c.Request(), "sanss")
+	if err != nil {
+		http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
+		return err
+	}
+	idValue := session.Values["id"]
+	id, ok := idValue.(string)
+	if !ok {
+		err := errors.New("Failed to convert id to string")
+		http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
+		return err
+	}
+
+	rows, err := db.Query("SELECT moludi, foodname FROM "+id+" WHERE day = ?", date)
+	if err != nil {
+		http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
+		return err
+	}
+	defer rows.Close()
+
+	var sFodds []Sfood
+	for rows.Next() {
+		var sfood Sfood
+		if err := rows.Scan(&sfood.Moludi, &sfood.Name); err != nil {
+			http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
+			return err
+		}
+		foodname := sfood.Name
+
+		// Execute the second query
+		row, err := db.Query("SELECT calories, tan, prot, prov, vita FROM foods WHERE food_name like '%" + foodname + "%'")
+		if err != nil {
+			http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
+			return err
+		}
+		defer row.Close()
+
+		// Process the second query result
+		if row.Next() {
+			if err := row.Scan(&sfood.Calories, &sfood.Carbohydrate, &sfood.Protein, &sfood.Province, &sfood.Vitamin); err != nil {
+				http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
+				return err
+			}
+		}
+
+		sFodds = append(sFodds, sfood)
+	}
+
+	// Encode the result as JSON and return
+	c.Response().Writer.Header().Set("Content-Type", "application/json")
+	if err := json.NewEncoder(c.Response().Writer).Encode(sFodds); err != nil {
+		http.Error(c.Response().Writer, err.Error(), http.StatusInternalServerError)
+		return err
+	}
+
+	return nil
 }
