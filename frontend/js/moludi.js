@@ -9,27 +9,7 @@ async function fetchFoods() {
 }
 
 async function renderFoodItems() {
-  //const foods = await fetchFoods();
-  const foods = [
-      {
-          "name": "꿔바로우(200g)",
-          "calories": 384,
-          "link": "https://homecuisine.co.kr/files/attach/images/142/016/002/262e4ed7466e1378b4047e69cff4d7d0.JPG",
-          "carbohydrate": "33.2",
-          "protein": "22.5",
-          "province": "17.4",
-          "vitamin": "7"
-      },
-      {
-          "name": "마라탕(210g)",
-          "calories": 638,
-          "link": "https://mashija.com/wp-content/uploads/2023/10/004-2.png",
-          "carbohydrate": "36",
-          "protein": "13.5",
-          "province": "37.5",
-          "vitamin": "15"
-      }
-  ];
+  const foods = await fetchFoods();
   const foodDiv = document.getElementById('foods');
   const searchInput = document.getElementById('searchInput').value.toLowerCase();
 

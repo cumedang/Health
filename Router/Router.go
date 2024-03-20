@@ -110,7 +110,7 @@ func DietProcess(c echo.Context) error {
 	db, err := sql.Open("mysql", "healthuser:1234@tcp(127.0.0.1:3306)/health")
 	utill.Error(err)
 	moludi := c.Request().FormValue("meal")
-	fname := c.Request().FormValue("food-name")
+	fname := c.Request().FormValue("food")
 	session, err := store.Get(c.Request(), "sanss")
 	utill.Error(err)
 	idValue := session.Values["id"]
