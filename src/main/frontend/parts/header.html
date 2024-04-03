@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>header</title>
+
+  <link rel="stylesheet" href="../css/header.css">
+</head>
+<body>
+  <header><h1>Healthy</h1></header>
+  <nav id="navigation">
+    <a id="loginLink" href="../login.html" target="_parent">로그인</a>
+    <a id="signupLink" href="../signup.html" target="_parent">회원가입</a>
+  </nav>
+</html>
+<script>
+  fetch('/session').then(response => response.json()).then(data => {
+      // 받아온 JSON에서 세션 ID 값을 추출하여 화면에 출력
+      document.getElementById('loginLink').textContent = data.id;
+      sessionId = data.id
+      if (sessionId) {
+      const signupLink = document.getElementById("signupLink");// <- 변경 
+      signupLink.innerHTML = "로그아웃";
+      signupLink.href = "/"; // 로그아웃 링크의 경우 JavaScript 함수를 호출하도록 설정하거나, 적절한 로그아웃 URL로 변경해야 합니다.
+      signupLink.addEventListener("click", function() {
+        // 로그아웃 로직을 처리할 JavaScript 함수를 호출하거나, 서버에 로그아웃 요청을 보낼 수 있습니다.
+        // 예: logout();
+        // 아래는 예시로 클릭 시 쿠키를 삭제하는 코드입니다.
+        document.cookie = "sanss=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        // 여기에 로그아웃 시 필요한 로직을 추가하세요.
+      });
+      
+      // 회원가입 링크를 숨깁니다.
+    
+    }
+  })
+  
+</script>

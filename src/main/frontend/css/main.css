@@ -1,0 +1,210 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* 색상 코드 6b9080-ff4949-cce3de-eaf4f4-f6fff8 */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Pretendard-Regular';
+}
+
+header {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 80px;
+    padding: 0px 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: rgb(255, 73, 73,0.8);
+    font-size: 45px;
+    font-family: 'Pretendard-Bold';
+    position: relative;
+    cursor: pointer;
+    transition: 0.35s;
+}
+
+header h1::before {
+    content: '';
+    width: 0%;
+    height: 20px;
+    left: 50%;
+    top: -300%;
+    z-index: -100;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    background-color: #ff4949;
+    transition: 0.35s;
+}
+
+header h1:hover {
+    color: white;
+}
+
+header h1:hover::before {
+    width: 120%;
+    height: 120%;
+    left: 50%;
+    top: 50%;
+    border-radius: 5px;
+}
+
+header a {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 35px;
+    margin-left: 15px;
+    border-radius: 30px;
+}
+
+header a#login {
+    color:rgb(255, 73, 73,0.8);;
+    border: 1px solid #ff4949;
+    transition: 0.35s;
+}
+
+header a#login:hover {
+    background-color: #ff4949;
+    color: white;
+}
+
+header a#sign {
+    color: white;
+    background-color: rgb(255, 73, 73,0.8);
+    position: relative;
+}
+
+header a#sign::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    bottom: 0%;
+    background-color: #ff4949;
+    position: absolute;
+    z-index: -1;
+    border-radius: 100px;
+    transition: 0.35s;
+}
+
+header a#sign:hover::before {
+    left: 10%;
+}
+
+main {
+    box-sizing: border-box;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: #f8fafc;
+    padding: 80px;
+    align-items: end;
+    z-index: -10;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+main div {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 150px;
+    z-index: 10;
+}
+
+main p {
+    color: #555;
+    font-size: 20px;
+}
+
+main h1 {
+    font-family: "Pretendard-Bold";
+    font-size: 65px;
+    color:  #555;
+}
+
+main h1 span {
+    font-size: 80px;
+    color: #ff4949;
+}
+
+main h6 {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #ddd;
+}
+
+main h6 span {
+    margin-left: 10px;
+    font-size: 20px;
+    color: #ff4949;
+}
+
+main a {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 35px;
+    border-radius: 30px;
+    color: white;
+    width: 70px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #ff4949;
+    position: relative;
+}
+
+main a::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    bottom: 0%;
+    background-color: #ff4949;
+    position: absolute;
+    z-index: -1;
+    border-radius: 100px;
+    transition: 0.35s;
+}
+
+main a:hover::before {
+    left: 10%;
+}
+
+@keyframes ani {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(10deg);
+    }
+}
+
+main #main_logo {
+    width: 450px;
+    animation: ani 3s linear infinite alternate;
+}
+
+footer {
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 20px;
+    padding-right: 200px;
+    line-height: 30px;
+    text-align: right;
+}

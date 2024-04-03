@@ -1,0 +1,162 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+header,
+section,
+footer {
+  text-align: center;
+}
+
+section {
+  margin-top: 20px;
+}
+
+.meal {
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.breakfast:hover,
+.lunch:hover,
+.dinner:hover {
+  border: 1px solid #ffffff;
+  padding: 10px;
+  background-color: #EB3232;
+  color: #ffffff;
+}
+
+h1 {
+  color: #ff0000;
+}
+
+iframe {
+  height: 200px;
+}
+
+/* 선택된 라디오 버튼의 색상을 변경하는 CSS */
+input[type="radio"]:checked+label  {
+  border: 1px solid #FF0000;
+}
+
+/* 라디오 버튼 숨기기 */
+input[type="radio"] {
+  display: none;
+}
+
+/* 선택된 항목의 라벨에 포커스 효과를 주기 위한 스타일 */
+input[type="radio"]+label:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+  border: 1px solid #FF0000;
+}
+
+/* 각 항목의 추가적인 스타일 */
+.breakfast,
+.lunch,
+.dinner {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 5px;
+  display: block;
+  width: 250px;
+  font-size: 18px;
+  cursor: pointer;
+  height: 45px;
+  line-height: 45px;
+}
+
+input[type="submit"] {
+  color: #ff0000;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  width: 250px;
+  height: 50px;
+}
+
+input[type="submit"]:hover {
+  border: 1px solid #EB3232;
+}
+
+#foods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 30px;
+}
+#time {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#foods {
+  min-height: 100px;
+}
+
+
+.food-item label {
+  border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    display: inline-block;
+    height: 500px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.img-box {
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  width: 200px;
+}
+
+.img-box img {
+  max-width: 100%; /* 이미지의 최대 너비를 부모 요소에 맞게 조절합니다. */
+  height: auto;
+  border-radius: 5px;
+  cursor: pointer; /* 이미지에 커서를 포인터로 변경하여 클릭 가능한 것처럼 보이도록 합니다. */
+  transition: transform 0.2s; /* 부드러운 변형 효과를 위한 트랜지션 속성을 추가합니다. */
+}
+
+.img-box img:hover {
+  transform: scale(1.05); /* 마우스를 이미지 위에 올렸을 때 약간 확대됩니다. */
+}
+
+.food-name {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.food-detail span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.food-detail {
+  font-size: 0.9em;
+}
+#searchInput {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .meal {
+    flex-direction: column;
+  }
+
+  #food {
+    width: 90%;
+    margin: 20px auto;
+  }
+}
