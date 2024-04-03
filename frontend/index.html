@@ -45,10 +45,11 @@
 <script>
     fetch('/session').then(response => response.json()).then(data => {
         // 받아온 JSON에서 세션 ID 값을 추출하여 화면에 출력
-        document.getElementById('login').textContent = data.id;
-        document.getElementById('login').href = "/"
+       
         sessionId = data.id
         if (sessionId) {
+            document.getElementById('login').textContent = data.id;
+        document.getElementById('login').href = "/"
         const signupLink = document.getElementById("sign");// <- 변경 
         signupLink.innerHTML = "로그아웃";
         signupLink.href = "/"; // 로그아웃 링크의 경우 JavaScript 함수를 호출하도록 설정하거나, 적절한 로그아웃 URL로 변경해야 합니다.
