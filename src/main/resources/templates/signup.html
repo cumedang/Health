@@ -56,6 +56,39 @@
     </form>
 </body>
 <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Form 데이터를 JSON 객체로 변환
+        const formData = new FormData(event.target);
+        const jsonObject = {};
+        formData.forEach((value, key) => {
+            jsonObject[key] = value;
+        });
+
+        // JSON 객체를 서버에 전송
+        fetch('/sign', {
+            method: 'POST',
+            body: JSON.stringify(jsonObject), // JSON 형식으로 변환하여 전송
+            headers: {
+                'Content-Type': 'application/json' // JSON 형식으로 전송한다고 명시
+            },
+        })
+            .then(response => response.json())  // JSON 응답을 해석
+            .then(data => {
+                console.log(data.sucess);
+                if (data.sucess == true) {
+                    alert("회원가입 성공")
+                    location.href="/"
+                } else {
+                    // 로그인 실패 시에는 서버 응답에 따라 동작 수행
+                    alert('회원가입에 실패했습니다');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
+<script>
     function check() {
         if(document.getElementById("name").value === "") {
             document.getElementById("name").focus()
