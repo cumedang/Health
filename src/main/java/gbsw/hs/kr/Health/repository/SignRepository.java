@@ -9,5 +9,7 @@ import java.util.Optional;
 @Repository
 public interface SignRepository extends JpaRepository<Signdto,String> {
     Optional<Signdto> findById(String userid);
-    Optional<Signdto> findByName(String userName);
+    Signdto findByName(String userName);
+
+    Optional<Signdto> findByPwd(String userid);
 }

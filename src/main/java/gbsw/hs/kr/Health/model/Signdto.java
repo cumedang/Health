@@ -1,9 +1,6 @@
 package gbsw.hs.kr.Health.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +13,11 @@ public class Signdto {
     private String id;
 
     @Column(name = "pw")
-    private String pw;
+    private String pwd;
 
     @Column(name = "name")
     private String name;
+
+    @Enumerated(value = EnumType.STRING) //저장될때는 string으로 저장되도록
+    private Role role;
 }
